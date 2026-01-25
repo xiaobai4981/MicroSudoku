@@ -46,7 +46,7 @@
     <string name="toolbar_hint_description">Ritar inn det rette talet i den valde ruta. Du kan slå dette av i innstillingane</string>
     <string name="toolbar_notes_description">Rit inn merknadar (små tal)</string>
     <string name="toolbar_erase_description">Tøm den valde ruta for tal og merknadar</string>
-    <string name="dialog_new_game">Spel i gang</string>
+    <string name="dialog_new_game_title">Spel i gang</string>
     <string name="action_cancel">Avbryt</string>
     <string name="action_confirm">Ja</string>
     <string name="action_delete">Slett</string>

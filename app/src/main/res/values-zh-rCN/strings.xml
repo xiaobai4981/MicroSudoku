@@ -187,7 +187,7 @@
     <string name="pref_date_format_custom_textfield_label">模式</string>
     <string name="pref_date_format_custom_label">自定义</string>
     <string name="nav_bar_statistics">统计数据</string>
-    <string name="dialog_new_game">进行中的游戏</string>
+    <string name="dialog_new_game_title">进行中的游戏</string>
     <string name="new_game">新游戏</string>
     <string name="dialog_new_game_text">您有一局未完成的游戏，您真的想开始一个新的吗\?</string>
     <string name="pref_crash_reporting">报告崩溃日志</string>

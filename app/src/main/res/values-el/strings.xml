@@ -101,7 +101,7 @@
     <string name="pref_app_theme">Θέμα εφαρμογής</string>
     <string name="pref_remaining_uses_summ">Ο αριθμός των χρήσεων που απομένουν για μια τιμή φαίνεται στα πλήκτρα</string>
     <string name="backup_option_settings">Ρυθμίσεις</string>
-    <string name="dialog_new_game">Παιχνίδι σε εξέλιξη</string>
+    <string name="dialog_new_game_title">Παιχνίδι σε εξέλιξη</string>
     <string name="sudoku_rules_mistakes_explanation">Το πρώτο λάθος είναι τα δύο 2 στο έκτο κουτί. Θυμάστε τον κανόνα ότι δεν μπορούν να υπάρχουν διπλές τιμές σε ένα κουτί; Το δεύτερο λάθος είναι ο αριθμός 6 στη σειρά 2, στήλη 8 (R2C8), επειδή υπάρχει ήδη ένα 6 σε αυτήν τη στήλη στο R5C8</string>
     <string name="type_default_9x9">9x9</string>
     <string name="tip_card_records_list_title">Λίστα ρεκόρ</string>

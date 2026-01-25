@@ -5,7 +5,7 @@
     <string name="nav_bar_home">Accueil</string>
     <string name="nav_bar_more">Plus</string>
     <string name="new_game">Nouveau jeu</string>
-    <string name="dialog_new_game">Jeu en cours</string>
+    <string name="dialog_new_game_title">Jeu en cours</string>
     <string name="dialog_new_game_text">Vous avez déjà une partie en cours, voulez-vous vraiment en commencer une nouvelle \?</string>
     <string name="dialog_new_game_positive">Démarrer une nouvelle partie</string>
     <string name="action_cancel">Annuler</string>

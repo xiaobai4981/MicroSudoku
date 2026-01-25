@@ -3,7 +3,7 @@
     <string name="dialog_new_game_text">Bitmemiş bir oyununuz var, yeni bir başlangıç yapmak istiyor musunuz\?</string>
     <string name="nav_bar_more">Daha fazla</string>
     <string name="new_game">Yeni oyun</string>
-    <string name="dialog_new_game">Oyun devam ediyor</string>
+    <string name="dialog_new_game_title">Oyun devam ediyor</string>
     <string name="dialog_new_game_positive">Yeni başlat</string>
     <string name="action_confirm">Evet</string>
     <string name="action_play">Oyna</string>

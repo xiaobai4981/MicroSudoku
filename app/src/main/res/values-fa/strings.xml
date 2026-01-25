@@ -8,7 +8,7 @@
     <string name="theme_lavender">اسطوخودوس</string>
     <string name="nav_bar_statistics">آمار</string>
     <string name="nav_bar_home">خانه</string>
-    <string name="dialog_new_game">بازی در جریان</string>
+    <string name="dialog_new_game_title">بازی در جریان</string>
     <string name="pref_board_font_size_small">کوچک</string>
     <string name="difficulty_easy">آسان</string>
     <string name="nav_bar_more">بیش‌تر</string>

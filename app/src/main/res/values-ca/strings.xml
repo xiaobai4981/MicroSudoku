@@ -4,7 +4,7 @@
     <string name="nav_bar_more">Més</string>
     <string name="nav_bar_statistics">Estadístiques</string>
     <string name="new_game">Nou joc</string>
-    <string name="dialog_new_game">Joc en progrés</string>
+    <string name="dialog_new_game_title">Joc en progrés</string>
     <string name="action_cancel">Cancel·la</string>
     <string name="action_confirm">Sí</string>
     <string name="action_delete">Suprimeix</string>

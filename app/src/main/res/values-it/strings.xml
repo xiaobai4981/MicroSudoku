@@ -9,7 +9,7 @@
     <string name="nav_bar_home">Home</string>
     <string name="nav_bar_more">Di più</string>
     <string name="new_game">Nuova partita</string>
-    <string name="dialog_new_game">Partita in corso</string>
+    <string name="dialog_new_game_title">Partita in corso</string>
     <string name="action_confirm">Sì</string>
     <string name="action_play">Gioca</string>
     <string name="action_continue">Continua</string>

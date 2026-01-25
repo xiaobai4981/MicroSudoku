@@ -6,7 +6,7 @@
     <string name="action_play">ابدأ</string>
     <string name="nav_bar_more">المزيد</string>
     <string name="new_game">لعبة جديدة</string>
-    <string name="dialog_new_game">يوجد لعبة جارية</string>
+    <string name="dialog_new_game_title">يوجد لعبة جارية</string>
     <string name="dialog_new_game_positive">ابدأ من جديد</string>
     <string name="action_cancel">إلغاء</string>
     <string name="action_confirm">نعم</string>

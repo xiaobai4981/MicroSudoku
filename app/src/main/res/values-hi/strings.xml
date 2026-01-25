@@ -36,7 +36,7 @@
     <string name="pref_remaining_uses">शेष उपयोग</string>
     <string name="pref_position_lines">स्थानीय रेखाएँ</string>
     <string name="statistics_difficulty_filter_all">सब</string>
-    <string name="dialog_new_game">खेल चालू है</string>
+    <string name="dialog_new_game_title">खेल चालू है</string>
     <string name="dialog_new_game_text">आपका खेल अभी अधुरा है, क्या आप सच में नया खेल शुरू करना चाहते है\?</string>
     <string name="action_confirm">हाॅं</string>
     <string name="difficulty_unspecified">अनिर्दिष्ट</string>

@@ -105,7 +105,7 @@
     <string name="game_over_mistakes">Вы совершили 3 ошибки</string>
     <string name="dialog_generating">Генерируем…</string>
     <string name="dialog_solving">Решаем…</string>
-    <string name="dialog_new_game">Игра в процессе</string>
+    <string name="dialog_new_game_title">Игра в процессе</string>
     <string name="dialog_new_game_text">У вас есть незавершенная игра, вы точно хотите начать новую\?</string>
     <string name="statistics">Статистика</string>
     <string name="games_started">Игр начато</string>

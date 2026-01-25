@@ -6,7 +6,7 @@
     <string name="add_to_folder_create_new">Luo uusi</string>
     <string name="nav_bar_more">Lisää</string>
     <string name="new_game">Uusi peli</string>
-    <string name="dialog_new_game">Peli meneillään</string>
+    <string name="dialog_new_game_title">Peli meneillään</string>
     <string name="dialog_new_game_text">Sinulla on keskeneräinen peli, haluatko varmasti aloittaa uuden?</string>
     <string name="action_cancel">Peru</string>
     <string name="action_confirm">Kyllä</string>

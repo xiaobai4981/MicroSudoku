@@ -3,7 +3,7 @@
     <string name="nav_bar_home">Inicio</string>
     <string name="nav_bar_more">Más</string>
     <string name="new_game">Nuevo juego</string>
-    <string name="dialog_new_game">Juego en progreso</string>
+    <string name="dialog_new_game_title">Juego en progreso</string>
     <string name="dialog_new_game_positive">Nuevo juego</string>
     <string name="action_cancel">Cancelar</string>
     <string name="action_confirm">Sí</string>

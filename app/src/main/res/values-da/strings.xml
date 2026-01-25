@@ -3,7 +3,7 @@
     <string name="nav_bar_statistics">Statistik</string>
     <string name="nav_bar_home">Hjem</string>
     <string name="new_game">Nyt spil</string>
-    <string name="dialog_new_game">Spil i gang</string>
+    <string name="dialog_new_game_title">Spil i gang</string>
     <string name="dialog_new_game_text">Du har et ufærdigt spil. Vil du virkelig gerne starte et nyt?</string>
     <string name="dialog_new_game_positive">Start nyt spil</string>
     <string name="action_cancel">Annuller</string>

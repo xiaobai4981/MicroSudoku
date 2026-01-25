@@ -167,7 +167,7 @@
     </plurals>
     <string name="nav_bar_statistics">Statistici</string>
     <string name="nav_bar_home">Acasă</string>
-    <string name="dialog_new_game">Joc în progres</string>
+    <string name="dialog_new_game_title">Joc în progres</string>
     <string name="dialog_new_game_text">Aveți un joc nefinalizat, sunteți sigur că doriți să începeți unul nou?</string>
     <string name="dialog_new_game_positive">Începere joc nou</string>
     <string name="action_confirm">Da</string>

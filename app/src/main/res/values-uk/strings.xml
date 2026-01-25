@@ -6,7 +6,7 @@
     <string name="pref_board_font_size">Розмір шрифту на полі</string>
     <string name="nav_bar_home">Головна</string>
     <string name="nav_bar_more">Більше</string>
-    <string name="dialog_new_game">Гра в процесі</string>
+    <string name="dialog_new_game_title">Гра в процесі</string>
     <string name="dialog_new_game_positive">Почати нове</string>
     <string name="action_cancel">Скасувати</string>
     <string name="action_confirm">Так</string>

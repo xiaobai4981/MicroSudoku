@@ -3,7 +3,7 @@
     <string name="nav_bar_home">Kezdőlap</string>
     <string name="nav_bar_more">Több</string>
     <string name="new_game">Új játék</string>
-    <string name="dialog_new_game">Játék folyamatban</string>
+    <string name="dialog_new_game_title">Játék folyamatban</string>
     <string name="dialog_new_game_positive">Elkezdés</string>
     <string name="action_cancel">Vissza</string>
     <string name="action_confirm">Igen</string>

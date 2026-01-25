@@ -75,7 +75,7 @@
     <string name="action_show_solution">Zobraziť riešenie</string>
     <string name="action_show_mine_sudoku">Zobraziť moje</string>
     <string name="onboard_title">Vitajte</string>
-    <string name="dialog_new_game">Hra prebieha</string>
+    <string name="dialog_new_game_title">Hra prebieha</string>
     <string name="dialog_new_game_text">Máte nedokončenú hru, naozaj chcete začať novú\?</string>
     <string name="type_default_6x6">6x6</string>
     <string name="difficulty_easy">Ľahká</string>

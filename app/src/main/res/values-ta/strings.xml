@@ -7,7 +7,7 @@
     <string name="pref_position_lines">இட வரிகள்</string>
     <string name="nav_bar_statistics">புள்ளிவிபரம்</string>
     <string name="nav_bar_more">மேலும்</string>
-    <string name="dialog_new_game">இடையிலுள்ள</string>
+    <string name="dialog_new_game_title">இடையிலுள்ள</string>
     <string name="dialog_new_game_positive">புதிய துவக்கம்</string>
     <string name="action_cancel">கைவிடு</string>
     <string name="action_confirm">ஆம்</string>

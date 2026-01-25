@@ -58,7 +58,7 @@
     <string name="pref_other">其他</string>
     <string name="pref_keep_screen_on">保持螢幕開啟</string>
     <string name="nav_bar_home">首頁</string>
-    <string name="dialog_new_game">進行中的遊戲</string>
+    <string name="dialog_new_game_title">進行中的遊戲</string>
     <string name="action_confirm">確定</string>
     <string name="pref_dark_theme_follow">跟隨系統</string>
     <string name="pref_board_font_size">數獨板字型大小</string>

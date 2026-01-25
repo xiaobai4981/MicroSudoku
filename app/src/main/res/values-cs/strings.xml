@@ -75,7 +75,7 @@
     <string name="theme_lavender">Levandulový</string>
     <string name="nav_bar_statistics">Statistiky</string>
     <string name="new_game">Nová hra</string>
-    <string name="dialog_new_game">Probíhá hra</string>
+    <string name="dialog_new_game_title">Probíhá hra</string>
     <string name="theme_peach">Broskvový</string>
     <string name="theme_yellow">Žlutý</string>
     <string name="dialog_new_game_text">Máte nedokončenou hru, opravdu chcete začít novou\?</string>

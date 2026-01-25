@@ -5,7 +5,7 @@
     <string name="nav_bar_more">Mais</string>
     <string name="nav_bar_home">Início</string>
     <string name="new_game">Novo jogo</string>
-    <string name="dialog_new_game">Jogo em andamento</string>
+    <string name="dialog_new_game_title">Jogo em andamento</string>
     <string name="dialog_new_game_text">Você tem um jogo em andamento, realmente deseja começar um novo\?</string>
     <string name="dialog_new_game_positive">Começar uma nova partida</string>
     <string name="action_cancel">Cancelar</string>

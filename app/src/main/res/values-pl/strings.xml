@@ -24,7 +24,7 @@
     <string name="action_continue">Kontynuuj</string>
     <string name="nav_bar_statistics">Statystyki</string>
     <string name="new_game">Nowa gra</string>
-    <string name="dialog_new_game">Gra w toku</string>
+    <string name="dialog_new_game_title">Gra w toku</string>
     <string name="pref_board_font_size_large">Duży</string>
     <string name="pref_board_font_size_small">Mały</string>
     <string name="pref_board_font_size_medium">Średni</string>

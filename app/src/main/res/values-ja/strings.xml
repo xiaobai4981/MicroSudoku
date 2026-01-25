@@ -12,7 +12,7 @@
     <string name="pref_dark_theme_off">オフ</string>
     <string name="pref_dark_theme_on">オン</string>
     <string name="pref_app_theme">アプリのテーマ</string>
-    <string name="dialog_new_game">進行中のゲーム</string>
+    <string name="dialog_new_game_title">進行中のゲーム</string>
     <string name="type_default_9x9">9×9</string>
     <string name="type_default_12x12">12×12</string>
     <string name="pref_board_font_size_medium">中</string>
