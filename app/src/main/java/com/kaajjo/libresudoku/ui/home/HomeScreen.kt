@@ -65,35 +65,27 @@ import com.kaajjo.libresudoku.ui.components.board.BoardPreview
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootNavGraph
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import kotlinx.coroutines.runBlocking
 import java.time.ZonedDateTime
 import kotlin.math.sqrt
 import kotlin.time.toKotlinDuration
+import kotlinx.coroutines.runBlocking
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Destination(style = AnimatedNavigation::class)
 @RootNavGraph(start = true)
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = hiltViewModel(),
-    navigator: DestinationsNavigator
-) {
+fun HomeScreen(viewModel: HomeViewModel = hiltViewModel(), navigator: DestinationsNavigator) {
     var continueGameDialog by rememberSaveable { mutableStateOf(false) }
-    var lastGamesBottomSheet by rememberSaveable {
-        mutableStateOf(false)
-    }
+    var lastGamesBottomSheet by rememberSaveable { mutableStateOf(false) }
 
     val lastGame by viewModel.lastSavedGame.collectAsStateWithLifecycle()
     val lastGames by viewModel.lastGames.collectAsStateWithLifecycle(initialValue = emptyMap())
-    val saveSelectedGameDifficultyType by viewModel.saveSelectedGameDifficultyType.collectAsStateWithLifecycle(
-        false
-    )
-    val lastSelectedGameDifficultyType by viewModel.lastSelectedGameDifficultyType.collectAsStateWithLifecycle(
-        Pair(
-            GameDifficulty.Easy, GameType.Default9x9
-        )
-    )
-
+    val saveSelectedGameDifficultyType by
+            viewModel.saveSelectedGameDifficultyType.collectAsStateWithLifecycle(false)
+    val lastSelectedGameDifficultyType by
+            viewModel.lastSelectedGameDifficultyType.collectAsStateWithLifecycle(
+                    Pair(GameDifficulty.Easy, GameType.Default9x9)
+            )
 
     LaunchedEffect(saveSelectedGameDifficultyType) {
         if (saveSelectedGameDifficultyType) {
@@ -105,148 +97,141 @@ fun HomeScreen(
 
     Scaffold { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.SpaceAround
+                modifier = Modifier.padding(paddingValues).fillMaxSize(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceAround
         ) {
             if (viewModel.readyToPlay) {
                 viewModel.readyToPlay = false
 
                 runBlocking {
-                    //viewModel.saveToDatabase()
+                    // viewModel.saveToDatabase()
                     val saved = lastGame?.completed ?: false
                     navigator.navigate(
-                        GameScreenDestination(
-                            gameUid = viewModel.insertedBoardUid,
-                            playedBefore = saved
-                        )
+                            GameScreenDestination(
+                                    gameUid = viewModel.insertedBoardUid,
+                                    playedBefore = saved
+                            )
                     )
                 }
             }
 
             Text(
-                text = stringResource(R.string.app_name),
-                style = MaterialTheme.typography.headlineLarge
+                    text = stringResource(R.string.app_name),
+                    style = MaterialTheme.typography.headlineLarge
             )
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 HorizontalPicker(
-                    text = stringResource(viewModel.selectedDifficulty.resName),
-                    onLeftClick = { viewModel.changeDifficulty(-1) },
-                    onRightClick = { viewModel.changeDifficulty(1) }
+                        text = stringResource(viewModel.selectedDifficulty.resName),
+                        onLeftClick = { viewModel.changeDifficulty(-1) },
+                        onRightClick = { viewModel.changeDifficulty(1) }
                 )
                 HorizontalPicker(
-                    text = stringResource(viewModel.selectedType.resName),
-                    onLeftClick = { viewModel.changeType(-1) },
-                    onRightClick = { viewModel.changeType(1) }
+                        text = stringResource(viewModel.selectedType.resName),
+                        onLeftClick = { viewModel.changeType(-1) },
+                        onRightClick = { viewModel.changeType(1) }
                 )
 
                 Spacer(Modifier.height(12.dp))
 
                 if (lastGame != null && !lastGame!!.completed) {
-                    Button(onClick = {
-                        if (lastGames.size <= 1) {
-                            lastGame?.let {
-                                navigator.navigate(
-                                    GameScreenDestination(
-                                        gameUid = it.uid,
-                                        playedBefore = true
-                                    )
-                                )
+                    Button(
+                            onClick = {
+                                if (lastGames.size <= 1) {
+                                    lastGame?.let {
+                                        navigator.navigate(
+                                                GameScreenDestination(
+                                                        gameUid = it.uid,
+                                                        playedBefore = true
+                                                )
+                                        )
+                                    }
+                                } else {
+                                    lastGamesBottomSheet = true
+                                }
                             }
-                        } else {
-                            lastGamesBottomSheet = true
-                        }
-                    }) {
-                        Text(stringResource(R.string.action_continue))
-                    }
-                    FilledTonalButton(onClick = {
-                        continueGameDialog = true
-                    }) {
+                    ) { Text(stringResource(R.string.action_continue)) }
+                    FilledTonalButton(onClick = { continueGameDialog = true }) {
                         Text(stringResource(R.string.action_play))
                     }
                 } else {
-                    Button(onClick = {
-                        viewModel.giveUpLastGame()
-                        viewModel.startGame()
-                    }) {
-                        Text(stringResource(R.string.action_play))
-                    }
+                    Button(
+                            onClick = {
+                                viewModel.giveUpLastGame()
+                                viewModel.startGame()
+                            }
+                    ) { Text(stringResource(R.string.action_play)) }
                 }
             }
         }
 
-
         if (viewModel.isGenerating || viewModel.isSolving) {
             GeneratingDialog(
-                onDismiss = { },
-                text = when {
-                    viewModel.isGenerating -> stringResource(R.string.dialog_generating)
-                    viewModel.isSolving -> stringResource(R.string.dialog_solving)
-                    else -> ""
-                }
+                    onDismiss = {},
+                    text =
+                            when {
+                                viewModel.isGenerating -> stringResource(R.string.dialog_generating)
+                                viewModel.isSolving -> stringResource(R.string.dialog_solving)
+                                else -> ""
+                            }
             )
         }
 
         if (continueGameDialog) {
             AlertDialog(
-                title = { Text(stringResource(R.string.dialog_new_game)) },
-                text = { Text(stringResource(R.string.dialog_new_game_text)) },
-                confirmButton = {
-                    TextButton(onClick = {
-                        continueGameDialog = false
-                        viewModel.giveUpLastGame()
-                        viewModel.startGame()
-                    }) {
-                        Text(stringResource(R.string.dialog_new_game_positive))
-                    }
-                },
-                dismissButton = {
-                    TextButton(onClick = { continueGameDialog = false }) {
-                        Text(stringResource(R.string.action_cancel))
-                    }
-                },
-                onDismissRequest = {
-                    continueGameDialog = false
-                }
+                    title = { Text(stringResource(R.string.dialog_new_game_title)) },
+                    text = { Text(stringResource(R.string.dialog_new_game_text)) },
+                    confirmButton = {
+                        TextButton(
+                                onClick = {
+                                    continueGameDialog = false
+                                    viewModel.giveUpLastGame()
+                                    viewModel.startGame()
+                                }
+                        ) { Text(stringResource(R.string.dialog_new_game_positive)) }
+                    },
+                    dismissButton = {
+                        TextButton(onClick = { continueGameDialog = false }) {
+                            Text(stringResource(R.string.action_cancel))
+                        }
+                    },
+                    onDismissRequest = { continueGameDialog = false }
             )
         }
 
         if (lastGamesBottomSheet) {
             ModalBottomSheet(onDismissRequest = { lastGamesBottomSheet = false }) {
                 Text(
-                    text = pluralStringResource(
-                        id = R.plurals.last_x_games,
-                        count = lastGames.size,
-                        lastGames.size
-                    ),
-                    modifier = Modifier.padding(start = 12.dp),
-                    style = MaterialTheme.typography.titleLarge
+                        text =
+                                pluralStringResource(
+                                        id = R.plurals.last_x_games,
+                                        count = lastGames.size,
+                                        lastGames.size
+                                ),
+                        modifier = Modifier.padding(start = 12.dp),
+                        style = MaterialTheme.typography.titleLarge
                 )
                 Spacer(modifier = Modifier.height(12.dp))
                 ScrollbarLazyColumn(
-                    contentPadding = PaddingValues(horizontal = 6.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                    modifier = Modifier.clip(MaterialTheme.shapes.large)
+                        contentPadding = PaddingValues(horizontal = 6.dp),
+                        verticalArrangement = Arrangement.spacedBy(8.dp),
+                        modifier = Modifier.clip(MaterialTheme.shapes.large)
                 ) {
                     items(lastGames.toList()) { item ->
                         SavedSudokuPreview(
-                            board = item.first.currentBoard,
-                            difficulty = stringResource(item.second.difficulty.resName),
-                            type = stringResource(item.second.type.resName),
-                            savedGame = item.first,
-                            onClick = {
-                                navigator.navigate(
-                                    GameScreenDestination(
-                                        gameUid = item.first.uid,
-                                        playedBefore = true
+                                board = item.first.currentBoard,
+                                difficulty = stringResource(item.second.difficulty.resName),
+                                type = stringResource(item.second.type.resName),
+                                savedGame = item.first,
+                                onClick = {
+                                    navigator.navigate(
+                                            GameScreenDestination(
+                                                    gameUid = item.first.uid,
+                                                    playedBefore = true
+                                            )
                                     )
-                                )
-                                lastGamesBottomSheet = false
-                            }
+                                    lastGamesBottomSheet = false
+                                }
                         )
                     }
                 }
@@ -256,33 +241,16 @@ fun HomeScreen(
 }
 
 @Composable
-fun GeneratingDialog(
-    onDismiss: () -> Unit,
-    text: String
-) {
+fun GeneratingDialog(onDismiss: () -> Unit, text: String) {
     Dialog(onDismissRequest = onDismiss) {
         Surface(
-            shape = RoundedCornerShape(28.dp),
-            color = MaterialTheme.colorScheme.surfaceColorAtElevation(6.dp)
+                shape = RoundedCornerShape(28.dp),
+                color = MaterialTheme.colorScheme.surfaceColorAtElevation(6.dp)
         ) {
-            Box(
-                contentAlignment = Alignment.Center,
-                modifier = Modifier.padding(24.dp)
-            ) {
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Column {
-                        Text(
-                            text = text,
-                            style = MaterialTheme.typography.bodyLarge
-                        )
-                    }
-                    Column(
-                        modifier = Modifier.padding(top = 16.dp)
-                    ) {
-                        CircularProgressIndicator()
-                    }
+            Box(contentAlignment = Alignment.Center, modifier = Modifier.padding(24.dp)) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                    Column { Text(text = text, style = MaterialTheme.typography.bodyLarge) }
+                    Column(modifier = Modifier.padding(top = 16.dp)) { CircularProgressIndicator() }
                 }
             }
         }
@@ -291,34 +259,31 @@ fun GeneratingDialog(
 
 @Composable
 fun HorizontalPicker(
-    modifier: Modifier = Modifier,
-    text: String,
-    onLeftClick: () -> Unit,
-    onRightClick: () -> Unit
+        modifier: Modifier = Modifier,
+        text: String,
+        onLeftClick: () -> Unit,
+        onRightClick: () -> Unit
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(vertical = 8.dp, horizontal = 36.dp),
-        verticalAlignment = Alignment.CenterVertically,
-        horizontalArrangement = Arrangement.SpaceBetween
+            modifier = modifier.fillMaxWidth().padding(vertical = 8.dp, horizontal = 36.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
     ) {
         IconButton(onClick = onLeftClick) {
             Icon(
-                painter = painterResource(R.drawable.ic_round_keyboard_arrow_left_24),
-                contentDescription = null
+                    painter = painterResource(R.drawable.ic_round_keyboard_arrow_left_24),
+                    contentDescription = null
             )
         }
         AnimatedContent(
-            targetState = text,
-            transitionSpec = { fadeIn() togetherWith fadeOut() }, label = "Animated text"
-        ) { text ->
-            Text(text)
-        }
+                targetState = text,
+                transitionSpec = { fadeIn() togetherWith fadeOut() },
+                label = "Animated text"
+        ) { text -> Text(text) }
         IconButton(onClick = onRightClick) {
             Icon(
-                painter = painterResource(R.drawable.ic_round_keyboard_arrow_right_24),
-                contentDescription = null
+                    painter = painterResource(R.drawable.ic_round_keyboard_arrow_right_24),
+                    contentDescription = null
             )
         }
     }
@@ -326,71 +291,62 @@ fun HorizontalPicker(
 
 @Composable
 fun SavedSudokuPreview(
-    board: String,
-    difficulty: String,
-    type: String,
-    savedGame: SavedGame,
-    modifier: Modifier = Modifier,
-    onClick: () -> Unit = { }
+        board: String,
+        difficulty: String,
+        type: String,
+        savedGame: SavedGame,
+        modifier: Modifier = Modifier,
+        onClick: () -> Unit = {}
 ) {
     Box(
-        modifier = modifier
-            .clip(MaterialTheme.shapes.medium)
-            .clickable(onClick = onClick)
-            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp))
+            modifier =
+                    modifier.clip(MaterialTheme.shapes.medium)
+                            .clickable(onClick = onClick)
+                            .background(MaterialTheme.colorScheme.surfaceColorAtElevation(3.dp))
     ) {
         Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(12.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth().padding(12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Box(
-                    modifier = Modifier
-                        .clip(RoundedCornerShape(4.dp))
-                        .size(130.dp)
-                        .align(Alignment.CenterVertically)
-                ) {
-                    BoardPreview(
-                        size = sqrt(board.length.toFloat()).toInt(),
-                        boardString = board
-                    )
-                }
-                Column(
-                    modifier = Modifier
-                        .padding(horizontal = 12.dp)
-                ) {
+                        modifier =
+                                Modifier.clip(RoundedCornerShape(4.dp))
+                                        .size(130.dp)
+                                        .align(Alignment.CenterVertically)
+                ) { BoardPreview(size = sqrt(board.length.toFloat()).toInt(), boardString = board) }
+                Column(modifier = Modifier.padding(horizontal = 12.dp)) {
                     Text("$difficulty $type")
                     Text(
-                        text = stringResource(
-                            R.string.history_item_time,
-                            savedGame.timer
-                                .toKotlinDuration()
-                                .toFormattedString()
-                        )
+                            text =
+                                    stringResource(
+                                            R.string.history_item_time,
+                                            savedGame.timer.toKotlinDuration().toFormattedString()
+                                    )
                     )
                     if (savedGame.lastPlayed != null) {
-                        val lastPlayedRelative by remember(savedGame) {
-                            mutableStateOf(
-                                DateUtils.getRelativeTimeSpanString(
-                                    savedGame.lastPlayed.toEpochSecond() * 1000L,
-                                    ZonedDateTime.now().toEpochSecond() * 1000L,
-                                    DateUtils.MINUTE_IN_MILLIS
-                                ).toString()
-                            )
-                        }
+                        val lastPlayedRelative by
+                                remember(savedGame) {
+                                    mutableStateOf(
+                                            DateUtils.getRelativeTimeSpanString(
+                                                            savedGame.lastPlayed.toEpochSecond() *
+                                                                    1000L,
+                                                            ZonedDateTime.now().toEpochSecond() *
+                                                                    1000L,
+                                                            DateUtils.MINUTE_IN_MILLIS
+                                                    )
+                                                    .toString()
+                                    )
+                                }
                         Text(lastPlayedRelative)
                     }
                 }
             }
-            IconButton(
-                onClick = onClick
-            ) {
+            IconButton(onClick = onClick) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
-                    contentDescription = null
+                        imageVector = Icons.AutoMirrored.Rounded.KeyboardArrowRight,
+                        contentDescription = null
                 )
             }
         }
