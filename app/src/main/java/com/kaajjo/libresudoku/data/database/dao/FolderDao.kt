@@ -21,10 +21,16 @@ interface FolderDao {
     fun countPuzzlesFolder(uid: Long): Long
 
     @Query(
-        "SELECT * FROM saved_game" +
-                " INNER JOIN board ON board.folder_id NOT NULL AND board_uid = board.uid AND can_continue" +
-                " ORDER BY last_played DESC" +
-                " LIMIT :gamesCount"
+        """
+    SELECT saved_game.*
+    FROM saved_game
+    INNER JOIN board 
+        ON saved_game.board_uid = board.uid
+    WHERE board.folder_id IS NOT NULL
+      AND saved_game.can_continue = 1
+    ORDER BY saved_game.last_played DESC
+    LIMIT :gamesCount
+    """
     )
     fun getLastSavedGamesAnyFolder(gamesCount: Int): Flow<List<SavedGame>>
 

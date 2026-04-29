@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 6,
-    "identityHash": "f0a74afcb17b9a4b4078f0765a30360d",
+    "identityHash": "b6769686b45c7bffa85e61d22ba0a675",
     "entities": [
       {
         "tableName": "record",
@@ -115,7 +115,17 @@
             "uid"
           ]
         },
-        "indices": [],
+        "indices": [
+          {
+            "name": "index_board_folder_id",
+            "unique": false,
+            "columnNames": [
+              "folder_id"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_board_folder_id` ON `${TABLE_NAME}` (`folder_id`)"
+          }
+        ],
         "foreignKeys": [
           {
             "table": "Folder",
@@ -261,7 +271,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f0a74afcb17b9a4b4078f0765a30360d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b6769686b45c7bffa85e61d22ba0a675')"
     ]
   }
 }

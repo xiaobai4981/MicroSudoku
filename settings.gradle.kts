@@ -13,6 +13,6 @@ dependencyResolutionManagement {
         maven("https://jitpack.io")
     }
 }
-rootProject.name = "LibreSudoku"
+rootProject.name = "MicroSudoku"
 include(":app")
 include(":Color-Picker")

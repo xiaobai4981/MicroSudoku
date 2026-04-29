@@ -3,6 +3,7 @@ package com.kaajjo.libresudoku.data.database.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.kaajjo.libresudoku.core.qqwing.GameDifficulty
 import com.kaajjo.libresudoku.core.qqwing.GameType
@@ -18,6 +19,9 @@ import kotlinx.serialization.Serializable
             parentColumns = arrayOf("uid"),
             childColumns = arrayOf("folder_id")
         )
+    ],
+    indices = [
+        Index(value = ["folder_id"])
     ]
 )
 data class SudokuBoard(

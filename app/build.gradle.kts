@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
@@ -13,19 +16,21 @@ android {
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.kaajjo.libresudoku"
+        applicationId = "com.huzhou.microsudoku"
         minSdk = 26
         targetSdk = 35
-        versionCode = 22
-        versionName = "2.0.2"
+        versionCode = 1
+        versionName = "1.0"
 
         vectorDrawables {
             useSupportLibrary = true
         }
 
-        ksp {
-            arg("room.schemaLocation", "${projectDir}/schemas")
-        }
+
+    }
+
+    ksp {
+        arg("room.schemaLocation", "${projectDir}/schemas")
     }
 
     // F-Droid
@@ -34,10 +39,25 @@ android {
         includeInBundle = false
     }
 
+    signingConfigs {
+        val keystorePropertiesFile = rootProject.file("keystore.properties")
+        val keystoreProperties = Properties()
+
+        keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+
+        create("basic") {
+            storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
+            storePassword = keystoreProperties.getProperty("storePassword")
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            signingConfig = signingConfigs.getByName("basic")
         }
     }
 

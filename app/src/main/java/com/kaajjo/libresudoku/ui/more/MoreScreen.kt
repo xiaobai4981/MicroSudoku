@@ -137,11 +137,11 @@ fun MoreScreen(
                 painter = painterResource(R.drawable.ic_outline_help_outline_24),
                 onClick = { navigator.navigate(LearnScreenDestination()) }
             )
-            PreferenceRow(
-                title = stringResource(R.string.about_title),
-                painter = painterResource(R.drawable.ic_outline_info_24),
-                onClick = { navigator.navigate(AboutScreenDestination()) }
-            )
+//            PreferenceRow(
+//                title = stringResource(R.string.about_title),
+//                painter = painterResource(R.drawable.ic_outline_info_24),
+//                onClick = { navigator.navigate(AboutScreenDestination()) }
+//            )
 
             if (!FlavorUtil.isFoss()) {
                 AnimatedVisibility(autoUpdateChannel != UpdateChannel.Disabled) {
